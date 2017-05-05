@@ -1,5 +1,6 @@
 package com.inmotionhosting.weathergirls;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,8 +41,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 try {
+                    Log.v(TAG, response.body().string());
                     if (response.isSuccessful()) {
-                        Log.v(TAG, response.body().string());
+                    }
+                    else {
+                        alertUserAboutError();
                     }
                 } catch (IOException e) {
                     Log.e(TAG, "Exception Caught: ", e);
@@ -50,4 +54,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void alertUserAboutError() {
+        AlertDialogFragment dialog = new AlertDialogFragment();
+        dialog.show(getFragmentManager(), "error_dialog");
+    }
+
 }
