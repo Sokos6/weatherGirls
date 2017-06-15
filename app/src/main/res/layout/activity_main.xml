@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -6,12 +7,12 @@
                 android:background="#fffc970b">
 
     <TextView
+        android:id="@+id/temperatureLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="100"
-        android:id="@+id/temperatureLabel"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="--"
         android:textColor="@android:color/white"
         android:textSize="150sp"/>
 
@@ -26,12 +27,12 @@
         android:layout_marginTop="50dp"/>
 
     <TextView
+        android:id="@+id/timeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="At 5:00 PM it will be"
-        android:id="@+id/timeLabel"
         android:layout_above="@+id/degreeImageView"
         android:layout_centerHorizontal="true"
+        android:text="..."
         android:textColor="#80ffffff"
         android:textSize="18sp"/>
 
@@ -80,13 +81,13 @@
                 android:gravity="center_horizontal"/>
 
             <TextView
+                android:id="@+id/humidityValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0.88"
-                android:id="@+id/humidityValue"
+                android:gravity="center_horizontal"
+                android:text="--"
                 android:textColor="@android:color/white"
-                android:textSize="24sp"
-                android:gravity="center_horizontal"/>
+                android:textSize="24sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -104,26 +105,44 @@
                 android:gravity="center_horizontal"/>
 
             <TextView
+                android:id="@+id/precipValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="100%"
-                android:id="@+id/precipValue"
+                android:gravity="center_horizontal"
+                android:text="--"
                 android:textColor="@android:color/white"
-                android:textSize="24sp"
-                android:gravity="center_horizontal"/>
+                android:textSize="24sp"/>
         </LinearLayout>
     </LinearLayout>
 
     <TextView
+        android:id="@+id/summaryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stormy with a chance of meatballs"
-        android:id="@+id/summaryLabel"
         android:layout_below="@+id/linearLayout"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:text="Getting current weather..."
         android:textColor="@android:color/white"
-        android:textSize="18dp"
-        android:gravity="center_horizontal"/>
+        android:textSize="18dp"/>
+
+    <ImageView
+        android:id="@+id/refreshImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        app:srcCompat="@drawable/refresh"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/refreshImageView"
+        android:layout_alignRight="@+id/refreshImageView"
+        android:layout_alignTop="@+id/refreshImageView"/>
 
 </RelativeLayout>
