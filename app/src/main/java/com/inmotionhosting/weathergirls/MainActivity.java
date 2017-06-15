@@ -32,14 +32,22 @@ public class MainActivity extends AppCompatActivity {
 
     private CurrentWeather mCurrentWeather;
 
-    @BindView(R.id.timeLabel) TextView mTimeLabel;
-    @BindView(R.id.temperatureLabel) TextView mTemperatureLabel;
-    @BindView(R.id.humidityValue) TextView mHumidityValue;
-    @BindView(R.id.precipValue) TextView mPrecipValue;
-    @BindView(R.id.summaryLabel) TextView mSummaryLabel;
-    @BindView(R.id.iconImageView) ImageView mIconImageView;
-    @BindView(R.id.refreshImageView) ImageView mRefreshImageView;
-    @BindView(R.id.progressBar) ProgressBar mProgressBar;
+    @BindView(R.id.timeLabel)
+    TextView mTimeLabel;
+    @BindView(R.id.temperatureLabel)
+    TextView mTemperatureLabel;
+    @BindView(R.id.humidityValue)
+    TextView mHumidityValue;
+    @BindView(R.id.precipValue)
+    TextView mPrecipValue;
+    @BindView(R.id.summaryLabel)
+    TextView mSummaryLabel;
+    @BindView(R.id.iconImageView)
+    ImageView mIconImageView;
+    @BindView(R.id.refreshImageView)
+    ImageView mRefreshImageView;
+    @BindView(R.id.progressBar)
+    ProgressBar mProgressBar;
 
 
     @Override
@@ -101,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
 
-                  try {
+                    try {
                         String jsonData = response.body().string();
                         Log.v(TAG, jsonData);
                         if (response.isSuccessful()) {
@@ -115,17 +123,14 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             alertUserAboutError();
                         }
-                    }
-                    catch (IOException e) {
+                    } catch (IOException e) {
                         Log.e(TAG, "Exception caught: ", e);
-                    }
-                    catch (JSONException e) {
+                    } catch (JSONException e) {
                         Log.e(TAG, "Exception caught: ", e);
                     }
                 }
             });
-        }
-        else {
+        } else {
             Toast.makeText(this, getString(R.string.network_unavailable_message),
                     Toast.LENGTH_LONG).show();
         }
@@ -135,8 +140,7 @@ public class MainActivity extends AppCompatActivity {
         if (mProgressBar.getVisibility() == View.INVISIBLE) {
             mProgressBar.setVisibility(View.VISIBLE);
             mRefreshImageView.setVisibility(View.INVISIBLE);
-        }
-        else {
+        } else {
             mProgressBar.setVisibility(View.INVISIBLE);
             mRefreshImageView.setVisibility(View.VISIBLE);
         }
